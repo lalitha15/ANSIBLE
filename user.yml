@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks: 
+  - name: create user
+    state: present
+    comment: ansible
+    
+

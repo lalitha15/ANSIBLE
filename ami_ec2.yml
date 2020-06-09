@@ -1,0 +1,18 @@
+---
+- hosts:
+  become: yes
+  tasks:
+   - name: find AMI published by Red Hat (09d95fab7fff3776c). 64-bitx84
+     ec2_ami_info:
+      aws_access_key: "{{ aws_access_key }}"
+      aws_secret_key: "{{ aws_secret_key }}"
+      region: "{{ aws_region }}"
+      owners: 09d95fab7fff3776c
+      filters:
+        architecture: x86_64
+        name: RHEL-8*HVM-*
+     register: amis
+   - name: show AMI's
+     debug:
+      var: amis
+   
